@@ -13,12 +13,10 @@ echo %PATH%
 
 
 
-curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/resetvars.vbs
-curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/resetvars.bat
-call resetvars.bat
-
-
-
+curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
+curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
+call ResetVariables.bat
 echo %PATH%
+node -v
 
 
