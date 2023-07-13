@@ -4,7 +4,9 @@
 cd %USERPROFILE%\Downloads
 npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth fs ghost-cursor neat-csv user-agents
 
+powershell.exe -command "Get-Content -path %USERPROFILE%\Downloads\package.json"
 powershell.exe -command "((Get-Content -path %USERPROFILE%\Downloads\package.json -Raw) -replace '{\r\n  \"dependencies\"','{\r\n  \"type\": \"module\",\r\n  \"dependencies\"') | Set-Content -Path %USERPROFILE%\Downloads\package.json"
+powershell.exe -command "Get-Content -path %USERPROFILE%\Downloads\package.json"
 
 
 
