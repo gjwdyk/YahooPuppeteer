@@ -2,7 +2,7 @@
 
 
 cd %USERPROFILE%\Downloads
-npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth fs ghost-cursor neat-csv user-agents
+call npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth fs ghost-cursor neat-csv user-agents
 
 
 
