@@ -8,7 +8,7 @@ import https from 'https';
 
 
 const chromeOptions = {
-  executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  executablePath: 'C:\\Users\\HC\\.cache\\puppeteer\\chrome\\win64-114.0.5735.133\\chrome-win64\\chrome.exe',
   headless: false,
   defaultViewport: null,
   ignoreHTTPSErrors: true,
@@ -32,7 +32,7 @@ const chromeOptions = {
     await installMouseHelper(page);
     var ghostcursor = createCursor(page);
 
-    await page.goto('https://acleda.xc.aadc.link/trading/login.php');
+    await page.goto('https://arcadia.apac-ent.f5demos.com/trading/login.php');
 
     var selector = "input[name='username']";
     await page.waitForSelector(selector);

@@ -15,12 +15,15 @@ powershell.exe "%USERPROFILE%\Downloads\EditPackageJSON.ps1"
 
 
 
-:: # Location of Chrome Browser:   C:\Users\HC\.cache\puppeteer\chrome\win64-113.0.5672.63\chrome-win64\chrome.exe
-:: # Need to escape '\' into '\\'
-:: C:\\Users\\HC\\.cache\\puppeteer\\chrome\\win64-113.0.5672.63\\chrome-win64\\chrome.exe
+:: Location of Chrome Browser which is brought by Puppeteer (version may change) :
+:: C:\Users\HC\.cache\puppeteer\chrome\win64-114.0.5735.133\chrome-win64\chrome.exe
+:: Need to escape '\' into '\\'
+:: C:\\Users\\HC\\.cache\\puppeteer\\chrome\\win64-114.0.5735.133\\chrome-win64\\chrome.exe
+:: You can also use normal Chrome Browser which you install manually, which usually will be located at :
+:: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
 
 
 
-:: Old main '.js' file may need to be changed into '.cjs'
+:: Old main '.js' file may need to be changed into '.cjs' (i.e. classic .js)
 
 
