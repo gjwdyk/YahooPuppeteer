@@ -12,3 +12,11 @@ msiexec.exe /i node-%NodeJSVersion%-x64.msi ADDLOCAL=ALL /qn /passive /promptres
 echo %PATH%
 
 
+
+curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/resetvars.vbs
+curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/resetvars.bat
+resetvars.bat
+
+echo %PATH%
+
+
