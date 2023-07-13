@@ -14,8 +14,8 @@ echo %PATH%
 
 
 curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/resetvars.vbs
-%~dp0resetvars.vbs
-call "%TEMP%\resetvars.bat"
+curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/resetvars.bat
+call resetvars.bat
 
 
 
