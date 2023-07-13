@@ -4,11 +4,9 @@
 cd %USERPROFILE%\Downloads
 npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth fs ghost-cursor neat-csv user-agents
 
-powershell.exe -command "Get-Content -path %USERPROFILE%\Downloads\package.json"
-powershell.exe -command "((Get-Content -path %USERPROFILE%\Downloads\package.json -Raw) -replace '{\r\n  \"dependencies\"','{\r\n  \"type\": \"module\",\r\n  \"dependencies\"') | Set-Content -Path %USERPROFILE%\Downloads\package.json"
-powershell.exe -command "Get-Content -path %USERPROFILE%\Downloads\package.json"
+curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/EditPackageJSON.ps1
 
-
+powershell.exe "%USERPROFILE%\Downloads\EditPackageJSON.ps1"
 
 :: # Edit "package.json" (example under C:\Users\HC\)
 :: {
@@ -18,7 +16,37 @@ powershell.exe -command "Get-Content -path %USERPROFILE%\Downloads\package.json"
 ::   }
 :: }
 
-:: ((Get-Content -path %USERPROFILE%\Downloads\package.json -Raw) -replace '{\r\n  \"dependencies\"','{\r\n  \"type\": \"module\",\r\n  \"dependencies\"') | Set-Content -Path %USERPROFILE%\Downloads\package.json
+:: ((Get-Content -path %USERPROFILE%\Downloads\package.json -Raw) -replace '{\n  \"dependencies\"','{\n  \"type\": \"module\",\n  \"dependencies\"') | Set-Content -Path %USERPROFILE%\Downloads\package.json
+
+:: C:\Users\HC\Downloads>powershell.exe -command "( (Get-Content -path %USERPROFILE%\Downloads\package.json -Raw) -match '{\n  \"dependencies\"' )"
+:: True
+
+:: PS C:\Users\HC\Downloads> Get-Content -path C:\Users\HC\Downloads\package.json
+:: {
+::   "dependencies": {
+::     "fs": "^0.0.1-security",
+::     "ghost-cursor": "^1.1.18",
+::     "neat-csv": "^7.0.0",
+::     "puppeteer": "^20.8.2",
+::     "puppeteer-extra": "^3.3.6",
+::     "puppeteer-extra-plugin-stealth": "^2.11.2",
+::     "user-agents": "^1.0.1439"
+::   }
+:: }
+:: PS C:\Users\HC\Downloads> ((Get-Content -path C:\Users\HC\Downloads\package.json -Raw) -replace '{\n  \"dependencies\"',"{`n  `"type`": `"module`",`n  `"dependencies`"") | Set-Content -Path C:\Users\HC\Downloads\package.json
+:: PS C:\Users\HC\Downloads> Get-Content -path C:\Users\HC\Downloads\package.json
+:: {
+::   "type": "module",
+::   "dependencies": {
+::     "fs": "^0.0.1-security",
+::     "ghost-cursor": "^1.1.18",
+::     "neat-csv": "^7.0.0",
+::     "puppeteer": "^20.8.2",
+::     "puppeteer-extra": "^3.3.6",
+::     "puppeteer-extra-plugin-stealth": "^2.11.2",
+::     "user-agents": "^1.0.1439"
+::   }
+:: }
 
 
 
