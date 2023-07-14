@@ -1,15 +1,25 @@
 
 
 
+:: ╔═╦═════════════════╦═╗
+:: ╠═╬═════════════════╬═╣
+:: ║ ║ Install Node.JS ║ ║
+:: ╠═╬═════════════════╬═╣
+:: ╚═╩═════════════════╩═╝
+
+:: ╔══════════════╗
+:: ║ Using WinGet ║
+:: ╚══════════════╝
+
 cd %USERPROFILE%\Downloads
 set InstallModule=OpenJS.NodeJS.LTS
 winget install --id %InstallModule% --accept-package-agreements --accept-source-agreements --verbose-logs --log %USERPROFILE%\Downloads\%InstallModule%.txt
 if %ERRORLEVEL% EQU 0 Echo %InstallModule% installed.
 
+:: ╔════════════════════════╗
+:: ║ Using cURL and MSIExec ║
+:: ╚════════════════════════╝
 
-
-:: :: Below segment installation using curl and msiexec.exe
-::
 :: :: Set the Node.JS version to be installed
 :: set NodeJSVersion=v18.16.1
 ::
@@ -23,18 +33,39 @@ if %ERRORLEVEL% EQU 0 Echo %InstallModule% installed.
 
 
 
+:: ╔═╦═══════════════════════════╦═╗
+:: ╠═╬═══════════════════════════╬═╣
+:: ║ ║ Test Node.JS Installation ║ ║
+:: ╠═╬═══════════════════════════╬═╣
+:: ╚═╩═══════════════════════════╩═╝
+
+:: ╔═════════════════════════════════╗
+:: ║ Fix Environment Variable %PATH% ║
+:: ╚═════════════════════════════════╝
+
 :: The followings force the current shell to refresh the environment variables, especially %PATH% variable which is needed to run Node.JS
 curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
 curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
 call ResetVariables.bat
 echo %PATH%
 
-:: Test a Node.JS command
+:: ╔═══════════════════════════╗
+:: ║ Test: Get Node.JS Version ║
+:: ╚═══════════════════════════╝
+
 FOR /F %%f IN ('node -v') DO set NodeJSVersion=%%f
 IF "%~NodeJSVersion" == "" (
  echo "Unable to find Node.JS !!!"
 ) else (
  echo "%~NodeJSVersion"
 )
+
+
+
+:: ╔═╦═════════════════╦═╗
+:: ╠═╬═════════════════╬═╣
+:: ║ ║ End of Document ║ ║
+:: ╠═╬═════════════════╬═╣
+:: ╚═╩═════════════════╩═╝
 
 
