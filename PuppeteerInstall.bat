@@ -11,7 +11,7 @@ curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/ma
 :: Enable System to run PowerShell script
 powershell.exe -command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
 :: Run the PowerShell script
-powershell.exe "%USERPROFILE%\Downloads\EditPackageJSON.ps1"
+powershell.exe -file "%USERPROFILE%\Downloads\EditPackageJSON.ps1"
 
 
 
