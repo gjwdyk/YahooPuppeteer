@@ -1,18 +1,25 @@
 
 
 
-:: Set the Node.JS version to be installed
-set NodeJSVersion=v18.16.1
-
-
-
-echo %PATH%
-:: Download the Node.JS installer .msi file to %USERPROFILE%\Downloads folder
 cd %USERPROFILE%\Downloads
-curl -kLO --retry 333 https://nodejs.org/dist/%NodeJSVersion%/node-%NodeJSVersion%-x64.msi
-:: Install the Node.JS installer .msi file
-msiexec.exe /i node-%NodeJSVersion%-x64.msi ADDLOCAL=ALL /qn /passive /promptrestart /L*vx %USERPROFILE%\Downloads\node-%NodeJSVersion%-x64.txt
-echo %PATH%
+set InstallModule=OpenJS.NodeJS.LTS
+winget install --id %InstallModule% --accept-package-agreements --accept-source-agreements --verbose-logs --log %USERPROFILE%\Downloads\%InstallModule%.txt
+if %ERRORLEVEL% EQU 0 Echo %InstallModule% installed.
+
+
+
+:: :: Below segment installation using curl and msiexec.exe
+::
+:: :: Set the Node.JS version to be installed
+:: set NodeJSVersion=v18.16.1
+::
+:: echo %PATH%
+:: :: Download the Node.JS installer .msi file to %USERPROFILE%\Downloads folder
+:: cd %USERPROFILE%\Downloads
+:: curl -kLO --retry 333 https://nodejs.org/dist/%NodeJSVersion%/node-%NodeJSVersion%-x64.msi
+:: :: Install the Node.JS installer .msi file
+:: msiexec.exe /i node-%NodeJSVersion%-x64.msi ADDLOCAL=ALL /qn /passive /promptrestart /L*vx %USERPROFILE%\Downloads\node-%NodeJSVersion%-x64.txt
+:: echo %PATH%
 
 
 
@@ -21,7 +28,13 @@ curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/ma
 curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
 call ResetVariables.bat
 echo %PATH%
+
 :: Test a Node.JS command
-node -v
+FOR /F %%f IN ('node -v') DO set NodeJSVersion=%%f
+IF "%~NodeJSVersion" == "" (
+ echo "Unable to find Node.JS !!!"
+) else (
+ echo "%~NodeJSVersion"
+)
 
 
