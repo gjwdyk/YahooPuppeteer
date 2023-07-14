@@ -13,11 +13,12 @@ set NormalChromeDefaultPathFile="C:\Program Files\Google\Chrome\Application\chro
 
 
 
+cd %USERPROFILE%\Downloads
+
 IF EXIST %NormalChromeDefaultPathFile% (
  echo "Chrome Browser had been installed at %NormalChromeDefaultPathFile% ."
 ) ELSE (
  echo "Can NOT Find %NormalChromeDefaultPathFile% . Try to download and install common normal Chrome browser."
- cd %USERPROFILE%\Downloads
  powershell.exe -command "winget install google.chrome"
 
  IF EXIST %NormalChromeDefaultPathFile% (
