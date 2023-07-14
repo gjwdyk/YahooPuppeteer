@@ -71,7 +71,9 @@ if [%NodeJSInstall%] == [Success] (
   echo "Installed Node.JS version is : %NodeJSVersion% ."
  )
 
-) else ()
+) else (
+ echo "No Node.JS Test Done, Since %InstallModule% installation %NodeJSInstall% ."
+)
 
 
 
