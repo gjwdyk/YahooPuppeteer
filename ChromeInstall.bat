@@ -18,8 +18,7 @@ IF EXIST %NormalChromeDefaultPathFile% (
 ) ELSE (
  echo "Can NOT Find %NormalChromeDefaultPathFile% . Try to download and install common normal Chrome browser."
  cd %USERPROFILE%\Downloads
- curl -kLO --retry 333 https://dl.google.com/chrome/install/ChromeStandaloneSetup64.exe
- ChromeStandaloneSetup64.exe /silent /install
+ powershell.exe -command "winget install google.chrome"
 
  IF EXIST %NormalChromeDefaultPathFile% (
   echo "Chrome Browser had been installed at %NormalChromeDefaultPathFile% ."
