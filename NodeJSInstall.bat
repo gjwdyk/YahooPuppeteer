@@ -48,7 +48,7 @@ echo "%InstallModule% installation %NodeJSInstall% ."
 :: ╠═╬═══════════════════════════╬═╣
 :: ╚═╩═══════════════════════════╩═╝
 
-if "%NodeJSInstall%" == "Success" (
+if [%NodeJSInstall%] == [Success] (
 
  :: ╔═════════════════════════════════╗
  :: ║ Fix Environment Variable %PATH% ║
