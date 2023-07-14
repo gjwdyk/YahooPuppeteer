@@ -14,7 +14,12 @@
 cd %USERPROFILE%\Downloads
 set InstallModule=OpenJS.NodeJS.LTS
 winget install --id %InstallModule% --accept-package-agreements --accept-source-agreements --verbose-logs --log %USERPROFILE%\Downloads\%InstallModule%.txt
-if %ERRORLEVEL% EQU 0 Echo %InstallModule% installed.
+if %ERRORLEVEL% EQU 0 (
+ set NodeJSInstall=Success
+) else (
+ set NodeJSInstall=Fail
+)
+echo "%InstallModule% installation %NodeJSInstall% ."
 
 :: ╔════════════════════════╗
 :: ║ Using cURL and MSIExec ║
@@ -23,13 +28,17 @@ if %ERRORLEVEL% EQU 0 Echo %InstallModule% installed.
 :: :: Set the Node.JS version to be installed
 :: set NodeJSVersion=v18.16.1
 ::
-:: echo %PATH%
 :: :: Download the Node.JS installer .msi file to %USERPROFILE%\Downloads folder
 :: cd %USERPROFILE%\Downloads
 :: curl -kLO --retry 333 https://nodejs.org/dist/%NodeJSVersion%/node-%NodeJSVersion%-x64.msi
 :: :: Install the Node.JS installer .msi file
 :: msiexec.exe /i node-%NodeJSVersion%-x64.msi ADDLOCAL=ALL /qn /passive /promptrestart /L*vx %USERPROFILE%\Downloads\node-%NodeJSVersion%-x64.txt
-:: echo %PATH%
+:: if %ERRORLEVEL% EQU 0 (
+::  set NodeJSInstall=Success
+:: ) else (
+::  set NodeJSInstall=Fail
+:: )
+:: Echo "%InstallModule% installation %NodeJSInstall% ."
 
 
 
@@ -39,26 +48,30 @@ if %ERRORLEVEL% EQU 0 Echo %InstallModule% installed.
 :: ╠═╬═══════════════════════════╬═╣
 :: ╚═╩═══════════════════════════╩═╝
 
-:: ╔═════════════════════════════════╗
-:: ║ Fix Environment Variable %PATH% ║
-:: ╚═════════════════════════════════╝
+if "%~NodeJSInstall" == "Success" (
 
-:: The followings force the current shell to refresh the environment variables, especially %PATH% variable which is needed to run Node.JS
-curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
-curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
-call ResetVariables.bat
-echo %PATH%
+ :: ╔═════════════════════════════════╗
+ :: ║ Fix Environment Variable %PATH% ║
+ :: ╚═════════════════════════════════╝
 
-:: ╔═══════════════════════════╗
-:: ║ Test: Get Node.JS Version ║
-:: ╚═══════════════════════════╝
+ :: The followings force the current shell to refresh the environment variables, especially %PATH% variable which is needed to run Node.JS
+ curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
+ curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
+ call ResetVariables.bat
+ echo %PATH%
 
-FOR /F %%f IN ('node -v') DO set NodeJSVersion=%%f
-IF "%~NodeJSVersion" == "" (
- echo "Unable to find Node.JS !!!"
-) else (
- echo "%~NodeJSVersion"
-)
+ :: ╔═══════════════════════════╗
+ :: ║ Test: Get Node.JS Version ║
+ :: ╚═══════════════════════════╝
+
+ for /F %%f in ('node -v') do set NodeJSVersion=%%f
+ if "%~NodeJSVersion" == "" (
+  echo "Unable to find Node.JS ."
+ ) else (
+  echo "Installed Node.JS version is %NodeJSVersion% ."
+ )
+
+) else ()
 
 
 
