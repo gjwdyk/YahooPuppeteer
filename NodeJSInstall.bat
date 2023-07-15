@@ -48,21 +48,21 @@ echo "%InstallModule% installation %NodeJSInstall% ."
 :: ╠═╬═══════════════════════════╬═╣
 :: ╚═╩═══════════════════════════╩═╝
 
-if %NodeJSInstall%==Success (
+if %NodeJSInstall% == Success (
 
- :: ╔═════════════════════════════════╗
- :: ║ Fix Environment Variable %PATH% ║
- :: ╚═════════════════════════════════╝
+:: ╔═════════════════════════════════╗
+:: ║ Fix Environment Variable %PATH% ║
+:: ╚═════════════════════════════════╝
 
- :: The followings force the current shell to refresh the environment variables, especially %PATH% variable which is needed to run Node.JS
+:: The followings force the current shell to refresh the environment variables, especially %PATH% variable which is needed to run Node.JS
  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
  call ResetVariables.bat
  echo %PATH%
 
- :: ╔═══════════════════════════╗
- :: ║ Test: Get Node.JS Version ║
- :: ╚═══════════════════════════╝
+:: ╔═══════════════════════════╗
+:: ║ Test: Get Node.JS Version ║
+:: ╚═══════════════════════════╝
 
  for /F %%f in ('node -v') do set NodeJSVersion=%%f
  if [%NodeJSVersion%]==[] (
