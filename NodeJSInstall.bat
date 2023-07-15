@@ -57,15 +57,15 @@ if [%NodeJSInstall%] == [Success] (
  curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
  curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
  call ResetVariables.bat
- echo %PATH%
 )
+if [%NodeJSInstall%] == [Success] ( echo %PATH% )
 
 rem +---------------------------+
 rem ! Test: Get Node.JS Version !
 rem +---------------------------+
 
+if [%NodeJSInstall%] == [Success] ( for /F %%f in ('node -v') do set NodeJSVersion=%%f )
 if [%NodeJSInstall%] == [Success] (
- for /F %%f in ('node -v') do set NodeJSVersion=%%f
  if [%NodeJSVersion%] == [] (
   echo "Installed Node.JS version is : [%NodeJSVersion%] ."
  ) else (
@@ -79,6 +79,7 @@ rem (2) Test: Get Node.JS Version
 rem have the same if condition test, theoretically they can be placed under the same block.
 rem However, we want the block of "Fix Environment Variable PATH" to happen first and use the changed/updated value for the next block.
 rem Therefore both blocks must be separated for that to happen.
+rem The same reason (iteration in smaller scope) for echo the value PATH in separate block; and assign NodeJSVersion value in separate block.
 
 
 
