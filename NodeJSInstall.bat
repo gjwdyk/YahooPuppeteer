@@ -59,7 +59,7 @@ if [%NodeJSInstall%] == [Success] (
  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
  call ResetVariables.bat
- echo %PATH%
+ echo !PATH!
 
  rem +---------------------------+
  rem ! Test: Get Node.JS Version !
