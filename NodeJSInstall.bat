@@ -48,34 +48,37 @@ rem ! ! Test Node.JS Installation ! !
 rem +-+---------------------------+-+
 rem +-+---------------------------+-+
 
-setlocal enabledelayedexpansion
+rem +-------------------------------+
+rem ! Fix Environment Variable PATH !
+rem +-------------------------------+
+
 if [%NodeJSInstall%] == [Success] (
-
- rem +-------------------------------+
- rem ! Fix Environment Variable PATH !
- rem +-------------------------------+
-
  rem The followings force the current shell to refresh the environment variables, especially PATH variable which is needed to run Node.JS
  curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
  curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
  call ResetVariables.bat
  echo %PATH%
- echo !PATH!
-
- rem +---------------------------+
- rem ! Test: Get Node.JS Version !
- rem +---------------------------+
-
- for /F %%f in ('node -v') do set NodeJSVersion=%%f
- if [!NodeJSVersion!] == [] (
-  echo "Installed Node.JS version is : [!NodeJSVersion!] ."
- ) else (
-  echo "Installed Node.JS version is : !NodeJSVersion! ."
- )
-
-) else (
- echo "No Node.JS Test Done, Since %InstallModule% installation %NodeJSInstall% ."
 )
+
+rem +---------------------------+
+rem ! Test: Get Node.JS Version !
+rem +---------------------------+
+
+if [%NodeJSInstall%] == [Success] (
+ for /F %%f in ('node -v') do set NodeJSVersion=%%f
+ if [%NodeJSVersion%] == [] (
+  echo "Installed Node.JS version is : [%NodeJSVersion%] ."
+ ) else (
+  echo "Installed Node.JS version is : %NodeJSVersion% ."
+ )
+)
+
+rem Since both :
+rem (1) Fix Environment Variable PATH and
+rem (2) Test: Get Node.JS Version
+rem have the same if condition test, theoretically they can be placed under the same block.
+rem However, we want the block of "Fix Environment Variable PATH" to happen first and use the changed/updated value for the next block.
+rem Therefore both blocks must be separated for that to happen.
 
 
 
