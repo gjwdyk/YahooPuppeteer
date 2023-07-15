@@ -48,7 +48,7 @@ echo "%InstallModule% installation %NodeJSInstall% ."
 :: ╠═╬═══════════════════════════╬═╣
 :: ╚═╩═══════════════════════════╩═╝
 
-if [%NodeJSInstall%] == [Success] (
+if [%NodeJSInstall%]==[Success] (
 
  :: ╔═════════════════════════════════╗
  :: ║ Fix Environment Variable %PATH% ║
@@ -65,7 +65,7 @@ if [%NodeJSInstall%] == [Success] (
  :: ╚═══════════════════════════╝
 
  for /F %%f in ('node -v') do set NodeJSVersion=%%f
- if [%NodeJSVersion%] == [] (
+ if [%NodeJSVersion%]==[] (
   echo "Installed Node.JS version is : [%NodeJSVersion%] ."
  ) else (
   echo "Installed Node.JS version is : %NodeJSVersion% ."
