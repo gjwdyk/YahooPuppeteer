@@ -1,11 +1,23 @@
 
 
 
-:: The built-in Chrome browser which Puppeteer brings-in with :
-:: have a more difficult installation path to deal with in terms of scripting (i.e. have version number in the path)
-:: When run, the browser actually named "Google Chrome for Testing"
+rem The built-in Chrome browser which Puppeteer brings-in with :
+rem have a more difficult installation path to deal with in terms of scripting (i.e. have version number in the path)
+rem When run, the browser actually named "Google Chrome for Testing"
 
-:: Therefore installing normal/common Chrome Browser
+rem Therefore installing normal/common Chrome Browser
+
+
+
+rem Location of Chrome Browser which is brought by Puppeteer (version may change) :
+rem C:\Users\HC\.cache\puppeteer\chrome\win64-114.0.5735.133\chrome-win64\chrome.exe
+rem Need to escape '\' into '\\'
+rem C:\\Users\\HC\\.cache\\puppeteer\\chrome\\win64-114.0.5735.133\\chrome-win64\\chrome.exe
+rem You can also use normal Chrome Browser which you install manually, which usually will be located at :
+rem C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
+
+
+
 
 
 

@@ -1,7 +1,17 @@
 
 
 
+rem +-+-------------------+-+
+rem +-+-------------------+-+
+rem ! ! Install Puppeteer ! !
+rem +-+-------------------+-+
+rem +-+-------------------+-+
+
 cd %USERPROFILE%\Downloads
+
+rem +-----------+
+rem ! Using NPM !
+rem +-----------+
 
 if not [%NodeJSVersion%]==[] (
  echo "Puppeteer installation with NodeJS version [%NodeJSVersion%] ."
@@ -15,6 +25,12 @@ if not [%NodeJSVersion%]==[] (
 if not [%NodeJSVersion%]==[] ( echo "Puppeteer installation %PuppeteerInstall% ." )
 
 
+
+rem +-+------------------------+-+
+rem +-+------------------------+-+
+rem ! ! Edit package.json File ! !
+rem +-+------------------------+-+
+rem +-+------------------------+-+
 
 if not [%NodeJSVersion%]==[] (
  if [%PuppeteerInstall%]==[Success] (
@@ -46,6 +62,12 @@ if not [%NodeJSVersion%]==[] (
 
 
 
+rem +-+---------------------------------------+-+
+rem +-+---------------------------------------+-+
+rem ! ! Summary Puppeteer Installation Status ! !
+rem +-+---------------------------------------+-+
+rem +-+---------------------------------------+-+
+
 if not [%NodeJSVersion%]==[] (
  if [%PuppeteerInstall%]==[Success] (
   if [%EditPackageJSON%]==[Success] (
@@ -58,13 +80,20 @@ if not [%NodeJSVersion%]==[] ( echo "Puppeteer installation [%PuppeteerInstall%]
 
 
 
-rem Location of Chrome Browser which is brought by Puppeteer (version may change) :
-rem C:\Users\HC\.cache\puppeteer\chrome\win64-114.0.5735.133\chrome-win64\chrome.exe
-rem Need to escape '\' into '\\'
-rem C:\\Users\\HC\\.cache\\puppeteer\\chrome\\win64-114.0.5735.133\\chrome-win64\\chrome.exe
-rem You can also use normal Chrome Browser which you install manually, which usually will be located at :
-rem C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
+rem +-+-------+-+
+rem +-+-------+-+
+rem ! ! Notes ! !
+rem +-+-------+-+
+rem +-+-------+-+
 
-rem Old main '.js' file may need to be changed into '.cjs' (i.e. classic .js)
+rem Old main '.js' file may need to be changed into '.cjs' (i.e. classic .js).
+
+
+
+rem +-+-------------------------------+-+
+rem +-+-------------------------------+-+
+rem ! ! End of Puppeteer Installation ! !
+rem +-+-------------------------------+-+
+rem +-+-------------------------------+-+
 
 

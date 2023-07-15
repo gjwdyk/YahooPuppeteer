@@ -76,8 +76,6 @@ if [%NodeJSInstall%]==[Success] (
  )
 )
 
-
-
 rem Since both :
 rem (1) Fix Environment Variable PATH and
 rem (2) Test: Get Node.JS Version
@@ -94,6 +92,9 @@ rem ! ! Notes ! !
 rem +-+-------+-+
 rem +-+-------+-+
 
+rem Notes in this Repository is meant to be read when editing the script, not when executing the script.
+rem When the scripts are executed, the Comments/Remarks may be shown, however the compiler may change some of the displayed text.
+rem
 rem Official Token for Comment is Rem .
 rem Using :: for comment may emit syntax error, example within a block statement.
 rem
@@ -108,10 +109,10 @@ rem (2) to call a subroutine to perform further processing using the changed val
 
 
 
-rem +-+-----------------+-+
-rem +-+-----------------+-+
-rem ! ! End of Document ! !
-rem +-+-----------------+-+
-rem +-+-----------------+-+
+rem +-+-----------------------------+-+
+rem +-+-----------------------------+-+
+rem ! ! End of Node.JS Installation ! !
+rem +-+-----------------------------+-+
+rem +-+-----------------------------+-+
 
 
