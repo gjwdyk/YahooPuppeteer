@@ -52,21 +52,21 @@ rem +-------------------------------+
 rem ! Fix Environment Variable PATH !
 rem +-------------------------------+
 
-if [%NodeJSInstall%] == [Success] (
+if [%NodeJSInstall%]==[Success] (
  rem The followings force the current shell to refresh the environment variables, especially PATH variable which is needed to run Node.JS
  curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
  curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.bat
  call ResetVariables.bat
 )
-if [%NodeJSInstall%] == [Success] ( echo %PATH% )
+if [%NodeJSInstall%]==[Success] ( echo %PATH% )
 
 rem +---------------------------+
 rem ! Test: Get Node.JS Version !
 rem +---------------------------+
 
-if [%NodeJSInstall%] == [Success] ( for /F %%f in ('node -v') do set NodeJSVersion=%%f )
-if [%NodeJSInstall%] == [Success] (
- if [%NodeJSVersion%] == [] (
+if [%NodeJSInstall%]==[Success] ( for /F %%f in ('node -v') do set NodeJSVersion=%%f )
+if [%NodeJSInstall%]==[Success] (
+ if [%NodeJSVersion%]==[] (
   echo "Installed Node.JS version is : [%NodeJSVersion%] ."
  ) else (
   echo "Installed Node.JS version is : %NodeJSVersion% ."
