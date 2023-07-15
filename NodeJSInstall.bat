@@ -64,14 +64,19 @@ rem +---------------------------+
 rem ! Test: Get Node.JS Version !
 rem +---------------------------+
 
-if [%NodeJSInstall%]==[Success] ( for /F %%f in ('node -v') do set NodeJSVersion="%%f" )
+rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the NodeJSVersion value (which will ruin the comparison with Empty String)
 if [%NodeJSInstall%]==[Success] (
- if "%NodeJSVersion%"=="" (
+ for /F %%f in ('node -v') do set NodeJSVersion=%%f
+)
+if [%NodeJSInstall%]==[Success] (
+ if [%NodeJSVersion%]==[] (
   echo "Installed Node.JS version is : [%NodeJSVersion%] ."
  ) else (
   echo "Installed Node.JS version is : %NodeJSVersion% ."
  )
 )
+
+
 
 rem Since both :
 rem (1) Fix Environment Variable PATH and
