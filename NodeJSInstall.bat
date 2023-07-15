@@ -1,15 +1,15 @@
 
 
 
-rem ╔═╦═════════════════╦═╗
-rem ╠═╬═════════════════╬═╣
-rem ║ ║ Install Node.JS ║ ║
-rem ╠═╬═════════════════╬═╣
-rem ╚═╩═════════════════╩═╝
+rem +-+-----------------+-+
+rem +-+-----------------+-+
+rem ! ! Install Node.JS ! !
+rem +-+-----------------+-+
+rem +-+-----------------+-+
 
-rem ╔══════════════╗
-rem ║ Using WinGet ║
-rem ╚══════════════╝
+rem +--------------+
+rem ! Using WinGet !
+rem +--------------+
 
 cd %USERPROFILE%\Downloads
 set InstallModule=OpenJS.NodeJS.LTS
@@ -21,9 +21,9 @@ if %ERRORLEVEL% EQU 0 (
 )
 echo "%InstallModule% installation %NodeJSInstall% ."
 
-rem ╔════════════════════════╗
-rem ║ Using cURL and MSIExec ║
-rem ╚════════════════════════╝
+rem +------------------------+
+rem ! Using cURL and MSIExec !
+rem +------------------------+
 
 rem rem Set the Node.JS version to be installed
 rem set NodeJSVersion=v18.16.1
@@ -42,17 +42,18 @@ rem Echo "%InstallModule% installation %NodeJSInstall% ."
 
 
 
-rem ╔═╦═══════════════════════════╦═╗
-rem ╠═╬═══════════════════════════╬═╣
-rem ║ ║ Test Node.JS Installation ║ ║
-rem ╠═╬═══════════════════════════╬═╣
-rem ╚═╩═══════════════════════════╩═╝
+rem +-+---------------------------+-+
+rem +-+---------------------------+-+
+rem ! ! Test Node.JS Installation ! !
+rem +-+---------------------------+-+
+rem +-+---------------------------+-+
 
+setlocal enabledelayedexpansion
 if [%NodeJSInstall%] == [Success] (
 
- rem ╔═══════════════════════════════╗
- rem ║ Fix Environment Variable PATH ║
- rem ╚═══════════════════════════════╝
+ rem +-------------------------------+
+ rem ! Fix Environment Variable PATH !
+ rem +-------------------------------+
 
  rem The followings force the current shell to refresh the environment variables, especially PATH variable which is needed to run Node.JS
  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
@@ -60,15 +61,15 @@ if [%NodeJSInstall%] == [Success] (
  call ResetVariables.bat
  echo %PATH%
 
- rem ╔═══════════════════════════╗
- rem ║ Test: Get Node.JS Version ║
- rem ╚═══════════════════════════╝
+ rem +---------------------------+
+ rem ! Test: Get Node.JS Version !
+ rem +---------------------------+
 
  for /F %%f in ('node -v') do set NodeJSVersion=%%f
- if [%NodeJSVersion%] == [] (
-  echo "Installed Node.JS version is : [%NodeJSVersion%] ."
+ if [!NodeJSVersion!] == [] (
+  echo "Installed Node.JS version is : [!NodeJSVersion!] ."
  ) else (
-  echo "Installed Node.JS version is : %NodeJSVersion% ."
+  echo "Installed Node.JS version is : !NodeJSVersion! ."
  )
 
 ) else (
@@ -77,10 +78,10 @@ if [%NodeJSInstall%] == [Success] (
 
 
 
-rem ╔═╦═════════════════╦═╗
-rem ╠═╬═════════════════╬═╣
-rem ║ ║ End of Document ║ ║
-rem ╠═╬═════════════════╬═╣
-rem ╚═╩═════════════════╩═╝
+rem +-+-----------------+-+
+rem +-+-----------------+-+
+rem ! ! End of Document ! !
+rem +-+-----------------+-+
+rem +-+-----------------+-+
 
 
