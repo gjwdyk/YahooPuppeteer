@@ -64,9 +64,9 @@ rem +---------------------------+
 rem ! Test: Get Node.JS Version !
 rem +---------------------------+
 
-if [%NodeJSInstall%]==[Success] ( for /F %%f in ('node -v') do set NodeJSVersion=%%f )
+if [%NodeJSInstall%]==[Success] ( for /F %%f in ('node -v') do set NodeJSVersion="%%f" )
 if [%NodeJSInstall%]==[Success] (
- if [%NodeJSVersion%]==[] (
+ if "%NodeJSVersion%"=="" (
   echo "Installed Node.JS version is : [%NodeJSVersion%] ."
  ) else (
   echo "Installed Node.JS version is : %NodeJSVersion% ."
