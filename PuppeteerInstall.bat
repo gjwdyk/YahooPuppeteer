@@ -11,27 +11,40 @@ if not [%NodeJSVersion%]==[] (
  ) else (
   set PuppeteerInstall=Fail
  )
- echo "Puppeteer installation %PuppeteerInstall% ."
 )
+if not [%NodeJSVersion%]==[] ( echo "Puppeteer installation %PuppeteerInstall% ." )
+
+
 
 if not [%NodeJSVersion%]==[] (
- if exist %USERPROFILE%\Downloads\package.json (
-  rem Download PowerShell script to edit package.json file
-  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/EditPackageJSON.ps1
-  rem Enable System to run PowerShell script
-  powershell.exe -command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
-  rem Run the PowerShell script
-  powershell.exe -file "%USERPROFILE%\Downloads\EditPackageJSON.ps1"
-  if %ERRORLEVEL% EQU 0 (
-   set EditPackageJSON=Success
+ if [%PuppeteerInstall%]==[Success] (
+  if exist %USERPROFILE%\Downloads\package.json (
+   rem Download PowerShell script to edit package.json file
+   curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/EditPackageJSON.ps1
+   rem Enable System to run PowerShell script
+   powershell.exe -command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
+   rem Run the PowerShell script
+   powershell.exe -file "%USERPROFILE%\Downloads\EditPackageJSON.ps1"
+   if %ERRORLEVEL% EQU 0 (
+    set EditPackageJSON=Success
+   ) else (
+    set EditPackageJSON=Fail
+   )
   ) else (
-   set EditPackageJSON=Fail
+   set EditPackageJSON=NotFound
   )
-  echo "Edit %USERPROFILE%\Downloads\package.json File %EditPackageJSON% ."
  ) else (
-  echo "Can NOT Find File %USERPROFILE%\Downloads\package.json ."
+  set EditPackageJSON=NotDone
  )
 )
+if not [%NodeJSVersion%]==[] (
+  if [%EditPackageJSON%]==[Success] ( echo "Edit %USERPROFILE%\Downloads\package.json File %EditPackageJSON% ." )
+  if [%EditPackageJSON%]==[Fail] ( echo "Edit %USERPROFILE%\Downloads\package.json File %EditPackageJSON% ." )
+  if [%EditPackageJSON%]==[NotFound] ( echo "Can NOT Find File %USERPROFILE%\Downloads\package.json ." )
+  if [%EditPackageJSON%]==[NotDone] ( echo "" )
+)
+
+
 
 if not [%NodeJSVersion%]==[] (
  if [%PuppeteerInstall%]==[Success] (
