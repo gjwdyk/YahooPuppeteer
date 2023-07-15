@@ -48,11 +48,11 @@ echo "%InstallModule% installation %NodeJSInstall% ."
 :: ╠═╬═══════════════════════════╬═╣
 :: ╚═╩═══════════════════════════╩═╝
 
-if %NodeJSInstall% == Success (
+if [%NodeJSInstall%] == [Success] (
 
-:: ╔═════════════════════════════════╗
-:: ║ Fix Environment Variable %PATH% ║
-:: ╚═════════════════════════════════╝
+:: ╔═══════════════════════════════╗
+:: ║ Fix Environment Variable PATH ║
+:: ╚═══════════════════════════════╝
 
 :: The followings force the current shell to refresh the environment variables, especially %PATH% variable which is needed to run Node.JS
  curl -kLO --retry 333 https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/ResetVariables.vbs
