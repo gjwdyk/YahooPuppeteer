@@ -29,7 +29,7 @@ const chromeOptions = {
     var context = await browser.createIncognitoBrowserContext();
     var page = await context.newPage();
     await page.setUserAgent(userAgent);
-    await page.setViewport({width: 0, height: 0});
+    await page.setViewport({width: 1709, height: 961});
     await installMouseHelper(page);
     var ghostcursor = createCursor(page);
 
