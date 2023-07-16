@@ -23,7 +23,7 @@ rem C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
 
 
 
-set CommonNormalChromeDefaultPathFile="C:\Program Files\Google\Chrome\Application\chrome.exe"
+set CommonNormalChromeDefaultPathFile='C:\Program Files\Google\Chrome\Application\chrome.exe'
 set InstallModule=Google.Chrome
 
 
