@@ -32,10 +32,10 @@ cd %USERPROFILE%\Downloads
 
 if exist %CommonNormalChromeDefaultPathFile% (
  echo "Chrome Browser had been installed at %CommonNormalChromeDefaultPathFile% ."
- PreviousChromeInstallationExist=Yes
+ set PreviousChromeInstallationExist=Yes
 ) else (
  echo "Can NOT find %CommonNormalChromeDefaultPathFile% ."
- PreviousChromeInstallationExist=No
+ set PreviousChromeInstallationExist=No
 )
 
 if [%PuppeteerInstall%]==[Successful] (

@@ -64,15 +64,15 @@ rem +---------------------------+
 rem ! Test: Get Node.JS Version !
 rem +---------------------------+
 
-rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the NodeJSVersion value (which will ruin the comparison with Empty String)
+rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the NodeJSInstalledVersion value (which will ruin the comparison with Empty String)
 if [%NodeJSInstall%]==[Success] (
- for /F %%f in ('node -v') do set NodeJSVersion=%%f
+ for /F %%f in ('node -v') do set NodeJSInstalledVersion=%%f
 )
 if [%NodeJSInstall%]==[Success] (
- if [%NodeJSVersion%]==[] (
-  echo "Installed Node.JS version is : [%NodeJSVersion%] ."
+ if [%NodeJSInstalledVersion%]==[] (
+  echo "Installed Node.JS version is : [%NodeJSInstalledVersion%] ."
  ) else (
-  echo "Installed Node.JS version is : %NodeJSVersion% ."
+  echo "Installed Node.JS version is : %NodeJSInstalledVersion% ."
  )
 )
 
@@ -82,7 +82,23 @@ rem (2) Test: Get Node.JS Version
 rem have the same if condition test, theoretically they can be placed under the same block.
 rem However, we want the block of "Fix Environment Variable PATH" to happen first and use the changed/updated value for the next block.
 rem Therefore both blocks must be separated for that to happen.
-rem The same reason (iteration in smaller scope) for echo the value PATH in separate block; and assign NodeJSVersion value in separate block.
+rem The same reason (iteration in smaller scope) for echo the value PATH in separate block; and assign NodeJSInstalledVersion value in separate block.
+
+rem +-----------------------+
+rem ! Test: Get NPM Version !
+rem +-----------------------+
+
+rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the NPMInstalledVersion value (which will ruin the comparison with Empty String)
+if [%NodeJSInstall%]==[Success] (
+ for /F %%f in ('npm -v') do set NPMInstalledVersion=%%f
+)
+if [%NodeJSInstall%]==[Success] (
+ if [%NPMInstalledVersion%]==[] (
+  echo "Installed NPM version is : [%NPMInstalledVersion%] ."
+ ) else (
+  echo "Installed NPM version is : %NPMInstalledVersion% ."
+ )
+)
 
 
 

@@ -13,8 +13,8 @@ rem +-----------+
 rem ! Using NPM !
 rem +-----------+
 
-if not [%NodeJSVersion%]==[] (
- echo "Puppeteer installation with NodeJS version [%NodeJSVersion%] ."
+if not [%NodeJSInstalledVersion%]==[] (
+ echo "Puppeteer installation with NodeJS version [%NodeJSInstalledVersion%] ."
  call npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth fs ghost-cursor neat-csv user-agents
  if %ERRORLEVEL% EQU 0 (
   set PuppeteerInstall=Success
@@ -22,7 +22,7 @@ if not [%NodeJSVersion%]==[] (
   set PuppeteerInstall=Fail
  )
 )
-if not [%NodeJSVersion%]==[] ( echo "Puppeteer installation %PuppeteerInstall% ." )
+if not [%NodeJSInstalledVersion%]==[] ( echo "Puppeteer installation %PuppeteerInstall% ." )
 
 
 
@@ -32,7 +32,7 @@ rem ! ! Edit package.json File ! !
 rem +-+------------------------+-+
 rem +-+------------------------+-+
 
-if not [%NodeJSVersion%]==[] (
+if not [%NodeJSInstalledVersion%]==[] (
  if [%PuppeteerInstall%]==[Success] (
   if exist %USERPROFILE%\Downloads\package.json (
    rem Download PowerShell script to edit package.json file
@@ -53,7 +53,7 @@ if not [%NodeJSVersion%]==[] (
   set EditPackageJSON=NotDone
  )
 )
-if not [%NodeJSVersion%]==[] (
+if not [%NodeJSInstalledVersion%]==[] (
   if [%EditPackageJSON%]==[Success] ( echo "Edit %USERPROFILE%\Downloads\package.json File %EditPackageJSON% ." )
   if [%EditPackageJSON%]==[Fail] ( echo "Edit %USERPROFILE%\Downloads\package.json File %EditPackageJSON% ." )
   if [%EditPackageJSON%]==[NotFound] ( echo "Can NOT Find File %USERPROFILE%\Downloads\package.json ." )
@@ -68,7 +68,7 @@ rem ! ! Summary Puppeteer Installation Status ! !
 rem +-+---------------------------------------+-+
 rem +-+---------------------------------------+-+
 
-if not [%NodeJSVersion%]==[] (
+if not [%NodeJSInstalledVersion%]==[] (
  if [%PuppeteerInstall%]==[Success] (
   if [%EditPackageJSON%]==[Success] (
    set PuppeteerInstall=Successful
@@ -76,7 +76,7 @@ if not [%NodeJSVersion%]==[] (
  )
 )
 
-if not [%NodeJSVersion%]==[] ( echo "Puppeteer installation [%PuppeteerInstall%] ." )
+if not [%NodeJSInstalledVersion%]==[] ( echo "Puppeteer installation [%PuppeteerInstall%] ." )
 
 
 
