@@ -84,22 +84,7 @@ if [%DoChromeInstallation%]==[Yes] ( echo "%InstallModule% installation %ChromeI
 
 
 
-
-
-
 rem powershell.exe -command "New-NetFirewallRule -DisplayName CommonNormalChromeBrowser -Direction Inbound -Program %CommonNormalChromeDefaultPathFile% -Action Allow"
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
