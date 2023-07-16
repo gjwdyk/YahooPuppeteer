@@ -11,6 +11,7 @@ const chromeOptions = {
   executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
   headless: false,
   defaultViewport: null,
+  args: [ '--start-maximized' ],
   ignoreHTTPSErrors: true,
   acceptInsecureCerts: true
 };
@@ -28,7 +29,7 @@ const chromeOptions = {
     var context = await browser.createIncognitoBrowserContext();
     var page = await context.newPage();
     await page.setUserAgent(userAgent);
-    await page.setViewport({width: 1920, height: 1080});
+    await page.setViewport({width: 0, height: 0});
     await installMouseHelper(page);
     var ghostcursor = createCursor(page);
 
