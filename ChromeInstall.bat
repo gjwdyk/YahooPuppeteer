@@ -38,28 +38,36 @@ if exist %CommonNormalChromeDefaultPathFile% (
  set PreviousChromeInstallationExist=No
 )
 
-if [%PuppeteerInstall%]==[Successful] (
- if [%PreviousChromeInstallationExist%]==[Yes] (
-  set DoChromeInstallation=No
-  echo "NO Chrome Installation will be done."
- ) else (
-  set DoChromeInstallation=Yes
-  echo "Chrome Installation will be executed shortly."
- )
-) else (
- if [%PuppeteerInstall%]==[Success] (
-  if [%PreviousChromeInstallationExist%]==[Yes] (
-   set DoChromeInstallation=No
-   echo "NO Chrome Installation will be done."
-  ) else (
-   set DoChromeInstallation=Yes
-   echo "Chrome Installation will be executed shortly."
-  )
- ) else (
-  set DoChromeInstallation=No
-  echo "NO Chrome Installation will be done."
- )
-)
+rem The below block does not have any logical flaw nor syntax flaw. However it does not work.
+rem On the Internet, there are references stating that Microsoft Windows' Command Line Batch does NOT support nested if else statements.
+rem The setlocal enabledelayedexpansion on nested block statement, also won't propagate update to too-far-outside scope.
+rem So if you're doing nested block statements with the delayed expansion, you need to be careful that your update won't be propagated to the outer scope if it has to travel too far out.
+rem
+rem It's amazing such a bad product were not fixed since 1980-something. While the company declare profit records for such a long time.
+rem What a true reflection of the corrupted god who created those people.
+
+rem if [%PuppeteerInstall%]==[Successful] (
+rem  if [%PreviousChromeInstallationExist%]==[Yes] (
+rem   set DoChromeInstallation=No
+rem  ) else (
+rem   set DoChromeInstallation=Yes
+rem  )
+rem ) else (
+rem  if [%PuppeteerInstall%]==[Success] (
+rem   if [%PreviousChromeInstallationExist%]==[Yes] (
+rem    set DoChromeInstallation=No
+rem   ) else (
+rem    set DoChromeInstallation=Yes
+rem   )
+rem  ) else (
+rem   set DoChromeInstallation=No
+rem  )
+rem )
+
+set DoChromeInstallation=No
+if [%PuppeteerInstall%]==[Successful] ( set DoChromeInstallation=Yes )
+if [%PuppeteerInstall%]==[Success] ( set DoChromeInstallation=Yes )
+if [%PreviousChromeInstallationExist%]==[Yes] ( set DoChromeInstallation=No )
 
 
 
