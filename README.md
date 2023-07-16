@@ -4,6 +4,8 @@
 
 ![UserAccountControl Node.JS](UserAccountControlNodeJS.png)
 
+![UserAccountControl GoogleChrome](UserAccountControlGoogleChrome.png)
+
 
 
 `cd %USERPROFILE%\Downloads && curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/InstallWrapper.bat && call InstallWrapper.bat`
