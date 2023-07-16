@@ -1,6 +1,17 @@
 # Yahoo Puppeteer
 
+End Goal: Migrating Yahoo Mail contents to Local OutLook (and to forward the emails to another account as a BackUp measure), automatically using Puppeteer.
 
+Yahoo at roughly the start of Coronavirus Disease (COVID-19) Pandemic, change access to their free email account from POP3/IMAP/SMTP into Web-Based only.
+This is a bad move for someone who needs to archive communicated information and documentation sent per email.
+After some researches on my own, I found a way to export the raw content of the email into Local OutLook, which I am trying to automate as much as possible with Puppeteer.
+
+This repository documented learning journey with some side-examples, using Microsoft Windows OS.
+Note that Microsoft Windows is notoriously Manual-Based OS. It is way harder to build CLI scripts (i.e. batch files) on Windows' Command Line Interpreter.
+
+I have tried to suppress as much as possible the required human-interaction, however there are still a few left which human-interactions are still needed.
+During the installation of the required library (i.e. Node.JS) and the browser (Google Chrome), user still needs to grant permission to do installation.
+Failing to respond in time (i.e. there is timeout enforced by the Windows OS), or answering/clicking anything else but "Yes" button, will cause the installation to fail.
 
 ![UserAccountControl Node.JS](UserAccountControlNodeJS.png)
 
