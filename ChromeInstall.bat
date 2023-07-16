@@ -21,14 +21,12 @@ rem
 rem You can use common/normal Chrome browser which you (commonly/normally) install manually, which usually will be located at :
 rem C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
 
-
+@echo on
 
 set CommonNormalChromeDefaultPathFile="C:\Program Files\Google\Chrome\Application\chrome.exe"
-set InstallModule=Google.Chrome
-
-
-
 cd %USERPROFILE%\Downloads
+
+
 
 if exist %CommonNormalChromeDefaultPathFile% (
  echo "Chrome Browser had been installed at %CommonNormalChromeDefaultPathFile% ."
@@ -79,6 +77,12 @@ if [%PreviousChromeInstallationExist%]==[Yes] (
 )
 
 
+
+rem +--------------+
+rem ! Using WinGet !
+rem +--------------+
+
+set InstallModule=Google.Chrome
 
 if [%DoChromeInstallation%]==[Yes] (
  winget install --id %InstallModule% --accept-package-agreements --accept-source-agreements --verbose-logs --log %USERPROFILE%\Downloads\%InstallModule%.txt

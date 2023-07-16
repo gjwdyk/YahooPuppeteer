@@ -7,6 +7,7 @@ rem ! ! Install Puppeteer ! !
 rem +-+-------------------+-+
 rem +-+-------------------+-+
 
+@echo on
 cd %USERPROFILE%\Downloads
 
 rem +-----------+

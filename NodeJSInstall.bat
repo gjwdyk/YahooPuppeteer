@@ -7,11 +7,13 @@ rem ! ! Install Node.JS ! !
 rem +-+-----------------+-+
 rem +-+-----------------+-+
 
+@echo on
+cd %USERPROFILE%\Downloads
+
 rem +--------------+
 rem ! Using WinGet !
 rem +--------------+
 
-cd %USERPROFILE%\Downloads
 set InstallModule=OpenJS.NodeJS.LTS
 winget install --id %InstallModule% --accept-package-agreements --accept-source-agreements --verbose-logs --log %USERPROFILE%\Downloads\%InstallModule%.txt
 if %ERRORLEVEL% EQU 0 (
