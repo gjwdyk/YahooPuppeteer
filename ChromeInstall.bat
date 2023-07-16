@@ -43,7 +43,7 @@ rem On the Internet, there are references stating that Microsoft Windows' Comman
 rem The setlocal enabledelayedexpansion on nested block statement, also won't propagate update to too-far-outside scope.
 rem So if you're doing nested block statements with the delayed expansion, you need to be careful that your update won't be propagated to the outer scope if it has to travel too far out.
 rem
-rem It's amazing such a bad product were not fixed since 1980-something. While the company declare profit records for such a long time.
+rem It's amazing such a bad product were allowed to be sold to public and not fixed since 1980-something. While the company declare profit records for such a long time.
 rem What a true reflection of the corrupted god who created those people.
 
 rem if [%PuppeteerInstall%]==[Successful] (
