@@ -65,9 +65,18 @@ rem  )
 rem )
 
 set DoChromeInstallation=No
-if [%PuppeteerInstall%]==[Successful] ( set DoChromeInstallation=Yes )
-if [%PuppeteerInstall%]==[Success] ( set DoChromeInstallation=Yes )
-if [%PreviousChromeInstallationExist%]==[Yes] ( set DoChromeInstallation=No )
+rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the assigned value (which will ruin the comparison later on)
+if [%PuppeteerInstall%]==[Successful] (
+ set DoChromeInstallation=Yes
+)
+rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the assigned value (which will ruin the comparison later on)
+if [%PuppeteerInstall%]==[Success] (
+ set DoChromeInstallation=Yes
+)
+rem Do NOT make the below one-liner, as the compiler may add space(s) at the end of the assigned value (which will ruin the comparison later on)
+if [%PreviousChromeInstallationExist%]==[Yes] (
+ set DoChromeInstallation=No
+)
 
 
 
