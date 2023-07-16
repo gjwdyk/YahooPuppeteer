@@ -23,7 +23,7 @@ rem C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
 
 
 
-set CommonNormalChromeDefaultPathFile='C:\Program Files\Google\Chrome\Application\chrome.exe'
+set CommonNormalChromeDefaultPathFile="C:\Program Files\Google\Chrome\Application\chrome.exe"
 set InstallModule=Google.Chrome
 
 
@@ -41,18 +41,23 @@ if exist %CommonNormalChromeDefaultPathFile% (
 if [%PuppeteerInstall%]==[Successful] (
  if [%PreviousChromeInstallationExist%]==[Yes] (
   set DoChromeInstallation=No
+  echo "NO Chrome Installation will be done."
  ) else (
   set DoChromeInstallation=Yes
+  echo "Chrome Installation will be executed shortly."
  )
 ) else (
  if [%PuppeteerInstall%]==[Success] (
   if [%PreviousChromeInstallationExist%]==[Yes] (
    set DoChromeInstallation=No
+   echo "NO Chrome Installation will be done."
   ) else (
    set DoChromeInstallation=Yes
+   echo "Chrome Installation will be executed shortly."
   )
  ) else (
   set DoChromeInstallation=No
+  echo "NO Chrome Installation will be done."
  )
 )
 
