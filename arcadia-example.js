@@ -8,7 +8,7 @@ import https from 'https';
 
 
 const chromeOptions = {
-  executablePath: 'C:\\Users\\HC\\.cache\\puppeteer\\chrome\\win64-114.0.5735.133\\chrome-win64\\chrome.exe',
+  executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
   headless: false,
   defaultViewport: null,
   ignoreHTTPSErrors: true,
