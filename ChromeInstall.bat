@@ -91,7 +91,6 @@ if [%DoChromeInstallation%]==[Yes] (
  ) else (
   set ChromeInstall=Fail
  )
-) else (
 )
 if [%DoChromeInstallation%]==[Yes] ( echo "%InstallModule% installation %ChromeInstall% ." )
 
