@@ -50,6 +50,16 @@ Snippet combining Node.JS, Puppeteer, Chrome Browser installations and also for 
 
 
 <br><br><br>
+
+***
+
+Snippet only for DRAFT YahooMail-Example script (once you have Node.JS, Puppeteer and Chrome Browser installed):
+
+`cd %USERPROFILE%\Downloads && curl -kLO --retry 333 -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" https://raw.githubusercontent.com/gjwdyk/YahooPuppeteer/main/yahoomail-example.js && call node yahoomail-example.js`
+
+
+
+<br><br><br>
 ```
 ╔═╦═════════════════╦═╗
 ╠═╬═════════════════╬═╣
