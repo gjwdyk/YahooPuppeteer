@@ -18,47 +18,42 @@ const chromeOptions = {
 
 (async () => {
   const browser = await puppeteer.launch(chromeOptions);
-  var randomData = {};
 
-  for (let counter = 0 ; counter <= 333 ; counter++) {
-    randomData = {};
-    await getRandomWord(randomData);
-    console.log(counter, '   ', await randomData["First"], '   ', await randomData["Second"]);
+  var userAgent = new UserAgent({ deviceCategory: 'desktop' }).toString();
+  var context = await browser.createIncognitoBrowserContext();
+  var page = await context.newPage();
+  await page.setUserAgent(userAgent);
+  await page.setViewport({width: 0, height: 0});
+  await installMouseHelper(page);
+  var ghostcursor = createCursor(page);
 
-    var userAgent = new UserAgent({ deviceCategory: 'desktop' }).toString();
-    var context = await browser.createIncognitoBrowserContext();
-    var page = await context.newPage();
-    await page.setUserAgent(userAgent);
-    await page.setViewport({width: 1709, height: 961});
-    await installMouseHelper(page);
-    var ghostcursor = createCursor(page);
+  await page.goto('https://de.yahoo.com/');
 
-    await page.goto('https://arcadia.apac-ent.f5demos.com/trading/login.php');
+  var selector = "button[class='btn secondary accept-all ']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
 
-    var selector = "input[name='username']";
-    await page.waitForSelector(selector);
-    await ghostcursor.move(selector);
-    await ghostcursor.click(selector);
-    await page.type(selector, randomData["First"]);
+  var selector = "div[id='ybarAccountProfile']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
+  // or the below also works
+  //var selector = "a[class='_yb_1koxw']";
+  //await page.waitForSelector(selector);
+  //await ghostcursor.move(selector);
+  //await ghostcursor.click(selector);
 
-    var selector = "input[name='password']";
-    await page.waitForSelector(selector);
-    await ghostcursor.move(selector);
-    await ghostcursor.click(selector);
-    await page.type(selector, randomData["Second"]);
 
-    var selector = "button[class='btn btn-primary']";
-    await page.waitForSelector(selector);
-    await ghostcursor.move(selector);
-    await ghostcursor.click(selector);
 
-    await page.waitForTimeout(4321);
-  
-    await page.close();
-    await context.close();
 
-  };
 
+
+
+  await page.waitForTimeout(43210);
+
+  await page.close();
+  await context.close();
   await browser.close();
 
 })();
@@ -132,43 +127,5 @@ async function installMouseHelper(page) {
     }, false);
   });
 };
-
-
-
-function getRandomWord(responseData) {
-  //var https = require("https");
-  //import https from 'https';
-
-  var options = {
-    hostname: "random-word-api.herokuapp.com",
-    port: 443,
-    path: "/word?number=2",
-    method: "GET"
-  };
-  console.log("External API Call Attempt for Random Word: " + JSON.stringify(options));
-  var request = https.request(options, function(response) {
-    console.log("External API Call Attempt Status Code: " + response.statusCode);
-    console.log("External API Call Attempt Response Headers: " + JSON.stringify(response.headers));
-    var body = "";
-    response.on("data", function(chunk) {
-      body += chunk;
-    });
-    response.on("end", function() {
-      console.log(body);
-      var FirstResult = body.substring( 0, body.indexOf(",") );
-      console.log(FirstResult);
-      var SecondResult = body.substring( ( body.indexOf(",") + 1 ) , body.length );
-      console.log(SecondResult);
-      responseData["First"] = FirstResult.substring( ( FirstResult.indexOf("\"") + 1 ), FirstResult.lastIndexOf("\"") );
-      console.log(responseData["First"]);
-      responseData["Second"] = SecondResult.substring( ( SecondResult.indexOf("\"") + 1 ), SecondResult.lastIndexOf("\"") );
-      console.log(responseData["Second"]);
-    });
-  });
-  request.on("error", function(error) {
-    console.log("External API Call Error:\n" + error);
-  });
-  request.end();
-}
 
 
