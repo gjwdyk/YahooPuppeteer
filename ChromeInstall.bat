@@ -96,6 +96,7 @@ if [%DoChromeInstallation%]==[Yes] ( echo "%InstallModule% installation %ChromeI
 
 
 
+rem In some cases you need to allow (open Windows' Firewall) for Chrome :
 rem powershell.exe -command "New-NetFirewallRule -DisplayName CommonNormalChromeBrowser -Direction Inbound -Program %CommonNormalChromeDefaultPathFile% -Action Allow"
 
 
