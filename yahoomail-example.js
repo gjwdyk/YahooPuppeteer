@@ -71,6 +71,36 @@ const chromeOptions = {
   console.log("User ID : ",userID);
   console.log("Password : ",userPassword);
 
+  var selector = "div[id='username-country-code-field']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
+  var selector = "input[id='browser-fp-data']";
+  await page.focus(selector);
+  await page.type(selector, userID, {delay: 22});
+  var selector = "input[id='login-signin']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
+
+  var selector = "input[id='login-passwd']";
+  await page.focus(selector);
+  await page.type(selector, userPassword, {delay: 22});
+  var selector = "button[id='login-signin']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
+
+
+
+  await page.waitForTimeout(55555);
+
+
+
+  var selector = 'a[href="https://mail.yahoo.com/?.intl=de&amp;.lang=de-DE"]';
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
 
 
 
@@ -78,8 +108,7 @@ const chromeOptions = {
 
 
 
-
-  await page.waitForTimeout(43210);
+  await page.waitForTimeout(987654321);
 
   await page.close();
   await context.close();
