@@ -25,6 +25,22 @@ const chromeOptions = {
 
 
 (async () => {
+  var userID = '';
+  var userPassword = '';
+  await fs.readFile(credentialPathFile, async (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    };
+    var dataCsv = await neatCsv(data);
+    //console.log(data);
+    //console.log(dataCsv);
+    //console.log(dataCsv[0].UserID);
+    //console.log(dataCsv[0].Password);
+    userID = dataCsv[0].UserID;
+    userPassword = dataCsv[0].Password;
+  });
+
   const browser = await puppeteer.launch(chromeOptions);
 
   var userAgent = new UserAgent({ deviceCategory: 'desktop' }).toString();
@@ -52,18 +68,8 @@ const chromeOptions = {
   //await ghostcursor.move(selector);
   //await ghostcursor.click(selector);
 
-  fs.readFile(credentialPathFile, async (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    };
-    var dataCsv = await neatCsv(data);
-
-
-
-    console.log(data);
-    console.log(dataCsv);
-  });
+  console.log("User ID : ",userID);
+  console.log("Password : ",userPassword);
 
 
 
