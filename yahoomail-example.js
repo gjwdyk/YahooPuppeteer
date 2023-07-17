@@ -7,14 +7,22 @@ import https from 'https';
 
 
 
+const initialURL = 'https://de.yahoo.com/';
+const chromePathFile = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const credentialPathFile = '.\\Credential.csv';
+
+
+
 const chromeOptions = {
-  executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  executablePath: chromePathFile,
   headless: false,
   defaultViewport: null,
   args: [ '--start-maximized' ],
   ignoreHTTPSErrors: true,
   acceptInsecureCerts: true
 };
+
+
 
 (async () => {
   const browser = await puppeteer.launch(chromeOptions);
@@ -27,7 +35,7 @@ const chromeOptions = {
   await installMouseHelper(page);
   var ghostcursor = createCursor(page);
 
-  await page.goto('https://de.yahoo.com/');
+  await page.goto(initialURL);
 
   var selector = "button[class='btn secondary accept-all ']";
   await page.waitForSelector(selector);
@@ -43,6 +51,21 @@ const chromeOptions = {
   //await page.waitForSelector(selector);
   //await ghostcursor.move(selector);
   //await ghostcursor.click(selector);
+
+  fs.readFile(credentialPathFile, async (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    };
+    var dataCsv = await neatCsv(data);
+
+
+
+    console.log(data);
+    console.log(dataCsv);
+  });
+
+
 
 
 
