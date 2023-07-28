@@ -53,16 +53,24 @@ const chromeOptions = {
 
   await page.goto(initialURL);
 
+  // Click the Accept-All
   var selector = "button[class='btn secondary accept-all ']";
   await page.waitForSelector(selector);
   await ghostcursor.move(selector);
   await ghostcursor.click(selector);
 
+  // Click the Mail link at the top right corner, at this point, it leads to Yahoo advertisement with no escape
+  //var selector = "a[id='ybarMailLink']";
+  //await page.waitForSelector(selector);
+  //await ghostcursor.move(selector);
+  //await ghostcursor.click(selector);
+
+  // Click the Anmelden link to Login
   var selector = "div[id='ybarAccountProfile']";
   await page.waitForSelector(selector);
   await ghostcursor.move(selector);
   await ghostcursor.click(selector);
-  // or the below also works
+  // or the below also works but the class name looks a dynamically generated field name
   //var selector = "a[class='_yb_1koxw']";
   //await page.waitForSelector(selector);
   //await ghostcursor.move(selector);
@@ -97,14 +105,17 @@ const chromeOptions = {
 
 
 
-  var selector = 'a[href="https://mail.yahoo.com/?.intl=de&amp;.lang=de-DE"]';
+  // Click the Mail link at the top right corner
+  var selector = "a[id='ybarMailLink']";
   await page.waitForSelector(selector);
   await ghostcursor.move(selector);
   await ghostcursor.click(selector);
 
-
-
-
+  // Click the one row of eMail. Can not identify point to specific one like the first row.
+  var selector = "tr[data-test-id='message-list-item']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
 
 
 
