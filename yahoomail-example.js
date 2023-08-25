@@ -119,6 +119,14 @@ const chromeOptions = {
 
 
 
+  // Click Raw Message link.
+  var selector = "a[title='Raw message']";
+  await page.waitForSelector(selector);
+  await ghostcursor.move(selector);
+  await ghostcursor.click(selector);
+
+
+
   await page.waitForTimeout(987654321);
 
   await page.close();
